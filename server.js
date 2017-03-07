@@ -8,9 +8,10 @@ var io = require('socket.io').listen(server);
 
 var users = [];
 var connections = [];
+const port = process.env.PORT || 3000;
 
-server.listen(process.env.PORT || 3000, function () {
-    console.log('Magic at port 3000')
+server.listen(port, function () {
+    console.log('Magic at port ' + port);
 });
 
 app.get('/', function (req, res) {
@@ -33,7 +34,7 @@ io.sockets.on('connection', function (socket) {
         socket.userName = userName;
         users.push(userName);        
 
-        io.sockets.emit('new-message', { msg: socket.userName + ' just entered the room.' });                
+        io.sockets.emit('new-message', { msg: '<strong>' + socket.userName + '</strong> just entered the room.' });                
         callback(true);
         updateUsers();                
     });
@@ -44,12 +45,12 @@ io.sockets.on('connection', function (socket) {
         connections.splice(connections.indexOf(socket), 1);
         updateUsers();
         console.log('Disconnected: %s sockets connected', connections.length);
-        io.sockets.emit('new-message', { msg: socket.userName + ' left the room.' });                
+        io.sockets.emit('new-message', { msg: '<strong>' + socket.userName + '</strong> left the room.' });                
     });
 
     //Send message
     socket.on('send-message', function (data) {
-        io.sockets.emit('new-message', { msg: socket.userName + ' says: ' + data });
+        io.sockets.emit('new-message', { msg: '<strong>' + socket.userName + '</strong> says: ' + data });
     });
 });
 
