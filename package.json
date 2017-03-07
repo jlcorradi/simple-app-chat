@@ -1,0 +1,31 @@
+{
+  "name": "simple-app-chat",
+  "version": "1.0.0",
+  "description": "Demo app for socket.io with nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlcorradi/simple-app-chat.git"
+  },
+  "keywords": [
+    "node",
+    "socket",
+    "chat",
+    "app",
+    "demo"
+  ],
+  "author": "Jorge Corradi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlcorradi/simple-app-chat/issues"
+  },
+  "homepage": "https://github.com/jlcorradi/simple-app-chat#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0",
+    "socket.io": "^1.7.3"
+  }
+}
